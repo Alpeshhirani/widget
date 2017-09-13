@@ -1,4 +1,4 @@
-package com.oozeetech.aaryagst.utils;
+package hirani.utils;
 
 import android.content.ContentUris;
 import android.content.Context;
