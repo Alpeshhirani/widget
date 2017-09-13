@@ -1,4 +1,4 @@
-package com.oozeetech.aaryagst.utils;
+package com.hirani.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
