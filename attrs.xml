@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DTextView">
+        <attr name="textFontFace" format="enum">
+            <enum name="REGULAR" value="1" />
+            <enum name="SEMI_BOLD" value="2" />
+            <enum name="BOLD" value="3" />
+            <enum name="LOGO_FONT" value="4" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="DEditText">
+        <attr name="editTextFontFace" format="enum">
+            <enum name="REGULAR" value="1" />
+            <enum name="SEMI_BOLD" value="2" />
+            <enum name="BOLD" value="3" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="DButton">
+        <attr name="buttonFontFace" format="enum">
+            <enum name="REGULAR" value="1" />
+            <enum name="SEMI_BOLD" value="2" />
+            <enum name="BOLD" value="3" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="DRadioButton">
+        <attr name="radioFontFace" format="enum">
+            <enum name="REGULAR" value="1" />
+            <enum name="SEMI_BOLD" value="2" />
+            <enum name="BOLD" value="3" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="DCheckBox">
+        <attr name="checkboxFontFace" format="enum">
+            <enum name="REGULAR" value="1" />
+            <enum name="SEMI_BOLD" value="2" />
+            <enum name="BOLD" value="3" />
+        </attr>
+    </declare-styleable>
+</resources>
