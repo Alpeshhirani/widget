@@ -44,37 +44,27 @@ public class FontUtils {
         Typeface typeface;
         switch (type) {
 
+
             case 1:
                 typeface = Typeface.createFromAsset(context.getAssets(),
-                        "fonts/Roboto-Regular.ttf");
+                        "fonts/Montserrat-Light.ttf");
                 break;
-
             case 2:
                 typeface = Typeface.createFromAsset(context.getAssets(),
-                        "fonts/Roboto-Medium.ttf");
+                        "fonts/Montserrat-Regular.ttf");
                 break;
-
             case 3:
                 typeface = Typeface.createFromAsset(context.getAssets(),
-                        "fonts/Roboto-Bold.ttf");
-                break;
-
-            case 4:
-                typeface = Typeface.createFromAsset(context.getAssets(),
-                        "fonts/Roboto-Light.ttf");
-                break;
-
-            case 5:
-                typeface = Typeface.createFromAsset(context.getAssets(),
-                        "fonts/AUDIOWIDE-REGULAR.TTF");
+                        "fonts/Montserrat-LightItalic.ttf");
                 break;
 
             default:
                 typeface = Typeface.createFromAsset(context.getAssets(),
-                        "fonts/Roboto-Regular.ttf");
+                        "fonts/Montserrat-Light.ttf");
                 break;
 
         }
         return typeface;
     }
 }
+
