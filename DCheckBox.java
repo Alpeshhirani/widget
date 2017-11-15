@@ -11,9 +11,6 @@ import com.hirani.R;
 import com.hirani.utils.FontUtils;
 
 
-/**
- * Created by divyeshshani on 12/09/16.
- */
 public class DCheckBox extends AppCompatCheckBox {
 
     public DCheckBox(Context context) {
