@@ -18,37 +18,10 @@ public class DCheckBox extends AppCompatCheckBox {
 
     public DCheckBox(Context context) {
         super(context);
-
-//        TextViewHelper.setTypeface(context, this);
     }
 
     public DCheckBox(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         TextViewHelper.setTypeface(context, this, attrs);
-    }
-
-    public static class TextViewHelper {
-
-        private static Typeface typeface = null;
-        private static int type;
-
-        public static void setTypeface(Context context, TextView textView, AttributeSet attrs) {
-
-            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DCheckBox);
-            try {
-                type = ta.getInt(R.styleable.DCheckBox_checkboxFontFace, 1);
-
-                typeface = FontUtils.fontName(context, type);
-
-
-            } finally {
-                ta.recycle();
-            }
-
-
-            textView.setTypeface(typeface);
-        }
-
     }
 }
