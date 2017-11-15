@@ -21,4 +21,5 @@ public class DButton extends AppCompatButton {
         super(context, attrs);
         TextViewHelper.setTypeface(context, this, attrs);
     }
+
 }
