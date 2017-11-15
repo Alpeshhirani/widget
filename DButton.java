@@ -21,28 +21,4 @@ public class DButton extends AppCompatButton {
         super(context, attrs);
         TextViewHelper.setTypeface(context, this, attrs);
     }
-
-    public static class TextViewHelper {
-
-        private static Typeface typeface = null;
-        private static int type;
-
-        public static void setTypeface(Context context, TextView textView, AttributeSet attrs) {
-
-            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DButton);
-            try {
-                type = ta.getInt(R.styleable.DButton_buttonFontFace, 1);
-
-                typeface = FontUtils.fontName(context, type);
-
-
-            } finally {
-                ta.recycle();
-            }
-
-
-            textView.setTypeface(typeface);
-        }
-
-    }
 }
