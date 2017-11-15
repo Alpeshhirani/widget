@@ -1,0 +1,19 @@
+            (Send BrodCast)
+			Intent intent = new Intent();
+            intent.setAction(Constants.FILTER_BROADCAST);
+            LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+            finish();
+			
+			
+			(Receive BrodCast)
+			 BroadcastReceiver Receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Pageindex = 0;
+            apiCall(Pageindex, pref.getString(Constants.FILTER_STATUS_ID), pref.getString(Constants.FILTER_COMPANY_ID));
+        }
+    };
+	
+			(register BrodCast)
+	    IntentFilter filter = new IntentFilter(Constants.FILTER_BROADCAST);
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(Receiver, filter);
