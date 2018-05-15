@@ -1,23 +1,6 @@
-package com.app.fixthys.widget;
+public class TextViewHelper {
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.util.AttributeSet;
-import android.widget.TextView;
-
-import com.app.fixthys.R;
-import com.app.fixthys.utils.FontUtils;
-
-/**
- * Created by Vishal Sojitra on 9/16/2017.
- */
-
-static void setTypeface(Context context, TextView textView, AttributeSet attrs) {
+    static void setTypeface(Context context, TextView textView, AttributeSet attrs) {
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DTextView);
         Drawable leftDrawable = null;
