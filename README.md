@@ -26,9 +26,9 @@ Add code in xml/provider_paths file
  signingConfigs {
         release {
             storeFile file(rootProject.file('/keystore.jks'))
-            storePassword "GetFamousForMusicallyLikesAndFollowers"
-            keyAlias "GetFamousForMusicallyLikesAndFollowers"
-            keyPassword "GetFamousForMusicallyLikesAndFollowers"
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
         }
     }
     buildTypes {
