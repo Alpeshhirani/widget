@@ -20,5 +20,23 @@ Add code in xml/provider_paths file
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path name="images" path="."/>
 </paths>
-        
-        
+ `````       
+# Add code in SigningConfigs
+`````        
+ signingConfigs {
+        release {
+            storeFile file(rootProject.file('/keystore.jks'))
+            storePassword "GetFamousForMusicallyLikesAndFollowers"
+            keyAlias "GetFamousForMusicallyLikesAndFollowers"
+            keyPassword "GetFamousForMusicallyLikesAndFollowers"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    vectorDrawables.useSupportLibrary = true
