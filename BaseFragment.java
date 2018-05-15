@@ -1,57 +1,3 @@
-package com.hirani.fragment;
-
-import android.Manifest;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import com.hirani.BuildConfig;
-import com.hirani.R;
-import com.hirani.activity.ActivityMobileNumber;
-import com.hirani.activity.MainActivity;
-import com.hirani.medel.login.logout.LogoutResponse;
-import com.hirani.retrofit.ApiClient;
-import com.hirani.retrofit.RequestAPI;
-import com.hirani.utils.Constants;
-import com.hirani.utils.GsonUtils;
-import com.hirani.utils.InternalStorageContentProvider;
-import com.hirani.utils.MarshMallowPermission;
-import com.hirani.utils.Preferences;
-import com.hirani.widget.DTextView;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-/**
- * Created by divyeshshani on 21/06/16.
- */
 public class BaseFragment extends Fragment {
     public static final int REQUEST_CODE_GALLERY = 0x1;
     public static final int REQUEST_CODE_TAKE_PICTURE = 0x2;
@@ -83,40 +29,42 @@ public class BaseFragment extends Fragment {
     public static File mFileTemp;
     public static boolean isChatActivityAlreadyOpened = false;
     public Preferences pref;
-    public GsonUtils gsonUtils;
     public MarshMallowPermission marshMallowPermission;
     public RequestAPI requestAPI;
     //    public LogUtils log;
 //    AsyncProgressDialog ad;
-    NavigationView navigationView;
     private Toast toast;
     private DrawerLayout drawer;
-    private BottomSheetBehavior mBehavior;
-    private BottomSheetDialog mBottomSheetDialog;
+
     AlertDialog progressdialog;
     Uri mImageCaptureUri = null;
-    public Callback<LogoutResponse> logoutResponseCallback = new Callback<LogoutResponse>() {
-        @Override
-        public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
-            dismissProgressDialog();
-            if (response.isSuccessful()) {
-                if (response.body().getReturnCode().equals("1")) {
-                    pref.clear();
-                    Intent intent = new Intent(getActivity(), ActivityMobileNumber.class);
-                    startActivity(intent);
-                    MainActivity.mainActivity.finishAffinity();
-                } else
-                    showDialog("", response.body().getReturnMsg(), response.body().getReturnCode());
-            } else {
-            }
-        }
 
-        @Override
-        public void onFailure(Call<LogoutResponse> call, Throwable t) {
-            dismissProgressDialog();
-            t.printStackTrace();
-        }
-    };
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+
+//    public Callback<LogoutResponse> logoutResponseCallback = new Callback<LogoutResponse>() {
+//        @Override
+//        public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
+//            dismissProgressDialog();
+//            if (response.isSuccessful()) {
+//                if (response.body().getReturnCode().equals("1")) {
+//                    pref.clear();
+//                    Intent intent = new Intent(getActivity(), ActivityMobileNumber.class);
+//                    startActivity(intent);
+//                    MainActivity.mainActivity.finishAffinity();
+//                } else
+//                    showDialog("", response.body().getReturnMsg(), response.body().getReturnCode());
+//            } else {
+//            }
+//        }
+//
+//        @Override
+//        public void onFailure(Call<LogoutResponse> call, Throwable t) {
+//            dismissProgressDialog();
+//            t.printStackTrace();
+//        }
+//    };
     private View rootView;
 
     public static void copyStream(InputStream input, OutputStream output) throws IOException {
@@ -132,7 +80,6 @@ public class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         toast = Toast.makeText(getActivity(), "", Toast.LENGTH_LONG);
-        gsonUtils = GsonUtils.getInstance();
         pref = new Preferences(getActivity());
         requestAPI = ApiClient.getClient().create(RequestAPI.class);
 //        log = new LogUtils(getActivity().getClass());
@@ -244,6 +191,7 @@ public class BaseFragment extends Fragment {
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
                     intent.putExtra("return-data", true);
                     startActivityForResult(intent, REQUEST_CODE_TAKE_PICTURE);
+
                 } catch (ActivityNotFoundException e) {
 //                    log.LOGE("cannot take picture", e);
                 }
@@ -269,9 +217,6 @@ public class BaseFragment extends Fragment {
     }
 
 
-    public boolean isLoggedIn() {
-        return pref.getBoolean(Constants.IS_LOGIN, false);
-    }
 
 //    public String formatDeciPoint(double value) {
 //        DecimalFormat formatVal = new DecimalFormat("##.##");
@@ -448,7 +393,7 @@ public class BaseFragment extends Fragment {
     }
 
     public void showSettingAlert() {
-        android.support.v7.app.AlertDialog.Builder alertDialog = new android.support.v7.app.AlertDialog.Builder(getActivity());
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setTitle("GPS");
         alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
